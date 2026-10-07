@@ -68,9 +68,8 @@ function knightMoves(start, end){
     //Add the start square to the shortestPath array
     shortestPath.unshift(moveTree[0][0])
 
-    return shortestPath;
+    console.log(`=> You made it in ${shortestPath.length-1} moves! Here's your path:`)
+    shortestPath.forEach(place => console.log(place));
 }
 
-let knight0077 = knightMoves([0,0],[7,7]);
-console.log("Knight reach a total of " + knight0077.length + " squares from [0,0] to [7,7]")
-console.log(knight0077);
+knightMoves([3,3],[4,3]);
