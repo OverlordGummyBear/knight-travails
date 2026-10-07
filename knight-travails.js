@@ -32,7 +32,6 @@ function knightMoves(start, end){
         let currentNode = queue.shift();
 
         moveTree.push([currentNode[0], currentNode[1]])
-        visited.add(`${currentNode[0][0]},${currentNode[0][1]}`)
 
         //Break if the end node is reached (shortest path has been found)
         if(currentNode[0][0] === end[0] && currentNode[0][1] === end[1]){
@@ -44,8 +43,11 @@ function knightMoves(start, end){
 
         //Add each possible move if the square haven't been visited
         potentialMoves.forEach(move => {
-            if(!visited.has(`${move[0]},${move[1]}`))
+            const key = `${move[0]},${move[1]}`;
+            if(!visited.has(key)){
+                visited.add(key);
                 queue.push([move, parent])
+            }
         });
 
         parent++;
